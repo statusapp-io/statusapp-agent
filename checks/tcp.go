@@ -33,7 +33,7 @@ func RunTCP(m Monitor) Result {
 		host = h
 	}
 
-	addr := fmt.Sprintf("%s:%d", host, port)
+	addr := net.JoinHostPort(host, fmt.Sprintf("%d", port))
 
 	timeout := time.Duration(m.Timeout) * time.Second
 	if timeout == 0 {

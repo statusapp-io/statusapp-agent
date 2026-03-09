@@ -49,7 +49,7 @@ func RunPing(m Monitor) Result {
 		port = *m.Port
 	}
 
-	addr := fmt.Sprintf("%s:%d", ip, port)
+	addr := net.JoinHostPort(ip, fmt.Sprintf("%d", port))
 	conn, err := net.DialTimeout("tcp", addr, timeout)
 	responseTime := int(time.Since(start).Milliseconds())
 
