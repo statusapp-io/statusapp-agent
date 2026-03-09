@@ -80,3 +80,12 @@ jobs:
           name: statusapp-agent-binaries-${{ github.ref_name }}
           path: dist/
           retention-days: 90
+
+      - name: Make package public
+        run: |
+          gh api \
+            --method PATCH \
+            /orgs/statusapp-io/packages/container/statusapp-agent/visibility \
+            -f visibility=public || echo "Package visibility update skipped (may already be public)"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
