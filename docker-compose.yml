@@ -1,0 +1,9 @@
+services:
+  statusapp-agent:
+    build: .
+    restart: unless-stopped
+    environment:
+      - STATUSAPP_API_URL=${STATUSAPP_API_URL}
+      - STATUSAPP_AGENT_KEY=${STATUSAPP_AGENT_KEY}
+      - STATUSAPP_POLL_INTERVAL=30s
+      - STATUSAPP_CONCURRENCY=5

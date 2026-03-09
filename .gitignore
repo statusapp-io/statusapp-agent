@@ -1,0 +1,3 @@
+statusapp-agent
+*.exe
+.env
