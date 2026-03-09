@@ -1,106 +1,70 @@
 # Contributing to StatusApp Agent
 
-Thank you for your interest in contributing to StatusApp Agent. This document provides guidelines and instructions for contributing.
-
-## Code of Conduct
-
-By participating in this project, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
+Thank you for your interest in contributing! This guide will help you get started.
 
 ## Getting Started
 
 ### Prerequisites
 
 - Go 1.26 or later
-- Docker (optional, for container builds)
-- Git
+- Docker (optional, for container testing)
 
-### Development Setup
+### Local Development
 
 ```bash
-# Clone the repository
 git clone https://github.com/statusapp-io/statusapp-agent.git
 cd statusapp-agent
-
-# Build
 go build -o statusapp-agent .
-
-# Run tests
 go test ./...
-
-# Run linter
-go vet ./...
 ```
 
-## How to Contribute
+### Running Locally
 
-### Reporting Bugs
+```bash
+export STATUSAPP_API_URL=https://api.statusapp.io
+export STATUSAPP_AGENT_KEY=your-agent-key
+./statusapp-agent
+```
 
-Before creating a bug report, please check existing issues to avoid duplicates. When filing a bug, use the [bug report template](.github/ISSUE_TEMPLATE/bug_report.yml) and include:
-
-- Your Go version (`go version`)
-- Your OS and architecture
-- Steps to reproduce the issue
-- Expected vs actual behavior
-- Relevant log output
-
-### Suggesting Features
-
-Feature requests are welcome. Use the [feature request template](.github/ISSUE_TEMPLATE/feature_request.yml) and describe:
-
-- The problem you're trying to solve
-- Your proposed solution
-- Any alternatives you've considered
-
-### Submitting Changes
+## Making Changes
 
 1. Fork the repository
-2. Create a feature branch from `main` (`git checkout -b feature/my-feature`)
+2. Create a feature branch from `main` (`git checkout -b feature/your-change`)
 3. Make your changes
-4. Add or update tests as needed
-5. Ensure all tests pass (`go test ./...`)
-6. Ensure code passes vet (`go vet ./...`)
-7. Commit your changes with a clear commit message
-8. Push to your fork and open a Pull Request
+4. Run tests: `go test ./...`
+5. Run the linter: `go vet ./...`
+6. Commit with a clear message
+7. Push to your fork and open a pull request
 
-### Adding a New Check Type
+## Code Guidelines
 
-To add a new monitor check type:
+- **No external dependencies.** This project uses only the Go standard library. Do not add third-party modules.
+- **Keep it simple.** The agent is intentionally minimal and lightweight.
+- **Write tests** for new check types or changes to existing checks.
+- **Follow Go conventions** — use `gofmt` and `go vet` before committing.
 
-1. Create a new file in `checks/` (e.g., `checks/mycheck.go`)
-2. Implement a function with the signature `func runMyCheck(m Monitor) Result`
-3. Register the check type in the `Run` dispatcher in `checks/types.go`
-4. Add tests in `checks/mycheck_test.go`
+## Adding a New Check Type
 
-## Coding Standards
+1. Create a new file in `checks/` (e.g., `checks/yourcheck.go`)
+2. Implement a function matching the signature: `func runYourCheck(m Monitor) Result`
+3. Register it in the `Run()` dispatcher in `checks/types.go`
+4. Add tests in `checks/yourcheck_test.go`
 
-- Follow standard Go conventions and [Effective Go](https://go.dev/doc/effective-go)
-- Use `go vet` and `go fmt` before committing
-- Keep the zero-dependency philosophy — avoid adding external dependencies unless absolutely necessary
-- Write clear, descriptive commit messages
-- Keep functions focused and small
+## Pull Requests
 
-## Commit Messages
+- Keep PRs focused — one feature or fix per PR
+- Reference any related issues
+- Ensure CI passes before requesting review
+- Fill out the PR template
 
-Use clear, concise commit messages:
+## Reporting Bugs
 
-```
-Add DNS CNAME record validation
+Use the [bug report template](https://github.com/statusapp-io/statusapp-agent/issues/new?template=bug_report.yml) on GitHub Issues.
 
-Check CNAME records during DNS monitor checks and validate
-against the expected value if configured.
-```
+## Security Issues
 
-- Use the imperative mood ("Add feature" not "Added feature")
-- First line should be under 72 characters
-- Add a blank line before any detailed description
-
-## Pull Request Guidelines
-
-- Keep PRs focused on a single change
-- Update documentation if your change affects user-facing behavior
-- All CI checks must pass before merging
-- PRs require at least one review approval
+Do **not** open a public issue for security vulnerabilities. See [SECURITY.md](SECURITY.md) for responsible disclosure instructions.
 
 ## License
 
-By contributing to StatusApp Agent, you agree that your contributions will be licensed under the same [Business Source License 1.1](LICENSE) that covers the project.
+By contributing, you agree that your contributions will be licensed under the same [Business Source License 1.1](LICENSE) that covers this project.

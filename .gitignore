@@ -1,29 +1,25 @@
 # Binary
 statusapp-agent
 *.exe
+bin/
+dist/
 
 # Environment
 .env
 .env.*
 
-# Build artifacts
-bin/
-dist/
+# OS
+.DS_Store
+Thumbs.db
+*~
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Test
-coverage.out
+# Test / build
 *.test
-
-# Debug
-__debug_bin*
+*.out
+coverage.txt

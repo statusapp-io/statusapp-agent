@@ -1,5 +1,10 @@
 # StatusApp Agent
 
+[![Build and Test](https://github.com/statusapp-io/statusapp-agent/actions/workflows/build.yml/badge.svg)](https://github.com/statusapp-io/statusapp-agent/actions/workflows/build.yml)
+[![Release](https://github.com/statusapp-io/statusapp-agent/actions/workflows/release.yml/badge.svg)](https://github.com/statusapp-io/statusapp-agent/actions/workflows/release.yml)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/statusapp-io/statusapp-agent)](https://go.dev/)
+[![License: BSL 1.1](https://img.shields.io/badge/License-BSL%201.1-blue.svg)](LICENSE)
+
 A lightweight, zero-dependency distributed monitoring agent written in Go. It polls the StatusApp API for monitors to check, executes health checks in parallel, and reports results back to the platform.
 
 ## Monitor Types
@@ -116,3 +121,15 @@ GitHub Actions workflows are included:
 ## License
 
 Business Source License 1.1 — free to use with a valid StatusApp subscription. Converts to Apache 2.0 on March 9, 2030. See [LICENSE](LICENSE) for full terms. Contact licensing@statusapp.io for alternative arrangements.
+
+## Contributing
+
+Contributions are welcome! Please read the [Contributing Guide](CONTRIBUTING.md) before opening a pull request.
+
+## Security
+
+To report a vulnerability, see [SECURITY.md](SECURITY.md). **Do not open a public issue.**
+
+## Code of Conduct
+
+This project follows the [Contributor Covenant](CODE_OF_CONDUCT.md). Please be respectful in all interactions.
